@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace Application.Commands.Players
 {
-    internal class WinTrophy
+    public class WinTrophy : IRequest<Unit>
     {
+        public long PlayerId { get; }
+
+        public WinTrophy(long playerId)
+        {
+            PlayerId = playerId;
+        }
     }
 }

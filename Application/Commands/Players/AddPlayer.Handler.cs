@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace Application.Commands.Players
 {
-    internal class AddPlayerHandler
+    class AddPlayerHandler : IRequestHandler<AddPlayer, Unit>
     {
+        public Task<Unit> Handle(AddPlayer request, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

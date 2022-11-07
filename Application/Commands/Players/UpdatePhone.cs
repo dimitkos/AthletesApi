@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace Application.Commands.Players
 {
-    internal class UpdatePhone
+    public class UpdatePhone : IRequest<Unit>
     {
+        public long PlayerId { get; set; }
+        public string PhoneNumber { get; }
+
+        public UpdatePhone(long playerId, string phoneNumber)
+        {
+            PlayerId = playerId;
+            PhoneNumber = phoneNumber;
+        }
     }
 }

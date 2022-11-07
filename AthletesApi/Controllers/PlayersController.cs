@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Application.Commands.Players;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -30,11 +31,11 @@ namespace Api.Controllers
         //    return Ok(students);
         //}
 
-        //[HttpPost("AddStudent")]
+        //[HttpPost("AddPlayer")]
         //[ProducesResponseType(StatusCodes.Status200OK)]
-        //public async Task<IActionResult> AddStudent([FromBody] AddStudentPayload payload)
+        //public async Task<IActionResult> AddPlayer([FromBody] AddPlayerPayload payload)
         //{
-        //    await _mediator.Send(new AddStudent(payload));
+        //    await _mediator.Send(new AddPlayer(payload));
         //    return Ok();
         //}
     }

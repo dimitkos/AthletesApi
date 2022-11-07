@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace Application.Commands.Players
 {
-    internal class AddPlayer
+    public class AddPlayer : IRequest<Unit>
     {
+        public string Name { get; }
+        public string PhoneNumber { get; }
+
+        public AddPlayer(string name, string phoneNumber)
+        {
+            Name = name;
+            PhoneNumber = phoneNumber;
+        }
     }
 }

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace Application.Commands.Players
 {
-    internal class WinTrophyHandler
+    class WinTrophyHandler : IRequestHandler<WinTrophy, Unit>
     {
+        public Task<Unit> Handle(WinTrophy request, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
