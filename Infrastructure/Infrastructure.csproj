@@ -8,9 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Cache\" />
-    <Folder Include="Database\Context\" />
-    <Folder Include="Database\Configuration\" />
-    <Folder Include="Persistence\Commands\" />
+    <Folder Include="Database\Context\Migrations\" />
     <Folder Include="Persistence\Queries\" />
   </ItemGroup>
 
