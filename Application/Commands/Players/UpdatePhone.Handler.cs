@@ -20,6 +20,8 @@ namespace Application.Commands.Players
 
         public async Task<Unit> Handle(UpdatePhone request, CancellationToken cancellationToken)
         {
+#warning this is wrong if i am not find in the cache must retrieve it from cache
+#warning may need to move interface into retrieval na dinfrastructure
             var player = await _cache.TryGet(new Key<long>(request.PlayerId));
 
             if (player is null)
