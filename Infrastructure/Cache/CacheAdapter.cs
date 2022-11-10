@@ -1,16 +1,8 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using Application.Infrastructure;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Infrastructure.Cache
 {
-    public interface ICacheAdapter<TKey, TEntity>
-        where TKey : struct
-        where TEntity : class
-    {
-        Task<TEntity?> TryGet(TKey key);
-        Task Add(TKey key, TEntity? entity);
-        Task Remove(TKey key);
-    }
-
 #warning check to handle IEntityKey
     class CacheAdapter<TKey, TEntity> : ICacheAdapter<TKey, TEntity>
         where TKey : struct /*IEntityKey*/
