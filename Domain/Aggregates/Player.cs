@@ -20,7 +20,7 @@ namespace Domain.Aggregates
         }
 
 #warning use interface instead static
-        public static AddPlayerDomainModel AddPlayer(string name, string phone)
+        public static AddPlayerDomainModel CreatePlayer(string name, string phone)
         {
             var now = DateTime.UtcNow;
 #warning use idgenerator
