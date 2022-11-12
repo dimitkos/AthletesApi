@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="Cache\" />
     <Folder Include="Database\Context\Migrations\" />
-    <Folder Include="Persistence\Queries\" />
   </ItemGroup>
 
 	<ItemGroup>
