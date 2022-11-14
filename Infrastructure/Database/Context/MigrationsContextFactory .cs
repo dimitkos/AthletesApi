@@ -17,7 +17,7 @@ namespace Infrastructure.Database.Context
 
             var optionsBuilder = new DbContextOptionsBuilder<PlayerDbContext>();
 #warning add conection string
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString(""));
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
 
             return new PlayerDbContext(optionsBuilder.Options);
         }
