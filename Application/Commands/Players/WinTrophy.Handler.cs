@@ -1,4 +1,5 @@
 ﻿using Application.Infrastructure;
+using Application.Services;
 using Application.Utils.Keys;
 using Domain.Aggregates;
 using Domain.Models;
@@ -11,24 +12,29 @@ namespace Application.Commands.Players
 #warning add logger
         private readonly IDomainModelPersistence<WinTrophyDomainModel> _persistence;
         private readonly ICacheAdapter<Key<long>, Player> _cache;
+        private readonly IEntityRetrievalService<Key<long>, Player> _retrieve;
 
-        public WinTrophyHandler(IDomainModelPersistence<WinTrophyDomainModel> persistence, ICacheAdapter<Key<long>, Player> cache)
+        public WinTrophyHandler(
+            IDomainModelPersistence<WinTrophyDomainModel> persistence,
+            ICacheAdapter<Key<long>, Player> cache,
+            IEntityRetrievalService<Key<long>, Player> retrieve)
         {
             _persistence = persistence;
             _cache = cache;
+            _retrieve = retrieve;
         }
 
         public async Task<Unit> Handle(WinTrophy request, CancellationToken cancellationToken)
         {
-#warning this is wrong if i am not find in the cache must retrieve it from cache
-#warning may need to move interface into retrieval na dinfrastructure
-            var player = await _cache.TryGet(new Key<long>(request.PlayerId));
-
-            if (player is null)
-                throw new Exception($"Player with id:{request.PlayerId} does not exist");
+            var key = new Key<long>(request.PlayerId);
+            var player = await _retrieve.Retrieve(key);
 
             var model = player.WinTrophy();
+
+#warning may use an interface store
             await _persistence.Persist(model);
+            await _cache.Add(key, model.Player);
+
 
             return Unit.Value;
         }
